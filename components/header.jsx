@@ -7,6 +7,7 @@ import {
   ChevronDown,
   StarsIcon,
   GraduationCap,
+  FileSearch2Icon,
 } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
@@ -17,24 +18,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import Image from "next/image";
-import { checkUser } from "@/lib/checkUser";
-// import { ModeToggle } from "./ui/mode-toggle";
 
 export default async function Header() {
-//  const user = await checkUser();
-
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="flex items-center space-x-2">
-{/*           <Image
-            src="/logo1.jpg"
-            alt="CareerEdge Logo"
-            width={100}
-            height={40}
-            className="h-10 w-auto"
-          /> */}
           CareerEdge
         </Link>
 
@@ -64,6 +53,7 @@ export default async function Header() {
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
+
               <DropdownMenuContent align="end" className="w-48">
                 <DropdownMenuItem asChild>
                   <Link href="/resume" className="flex items-center gap-2">
@@ -72,20 +62,12 @@ export default async function Header() {
                   </Link>
                 </DropdownMenuItem>
 
-                {/* <DropdownMenuItem asChild>
-                  <Link href="/resume-analyzer" className="flex items-center gap-2">
-                    <FileText className="h-4 w-4" />
-                    Resume Analyzer
-                  </Link>
-                // </DropdownMenuItem> */}
-
                 <DropdownMenuItem asChild>
-                  <Link href="/interview" className="flex items-center gap-2">
-                    <GraduationCap className="h-4 w-4" />
-                    Interview Prep
+                  <Link href="/resume-analyser" className="flex items-center gap-2">
+                    <FileSearch2Icon className="h-4 w-4" />
+                    Resume Analyser
                   </Link>
                 </DropdownMenuItem>
-              
 
                 <DropdownMenuItem asChild>
                   <Link
@@ -96,6 +78,14 @@ export default async function Header() {
                     Cover Letter
                   </Link>
                 </DropdownMenuItem>
+
+                <DropdownMenuItem asChild>
+                  <Link href="/interview" className="flex items-center gap-2">
+                    <GraduationCap className="h-4 w-4" />
+                    Interview Prep
+                  </Link>
+                </DropdownMenuItem>
+
               </DropdownMenuContent>
             </DropdownMenu>
           </SignedIn>
@@ -130,7 +120,7 @@ export default async function Header() {
 // The Header component serves as the navigation bar for the CareerEdge application.
 // It includes links to the dashboard, growth tools, and user authentication options.
 // The header is fixed at the top of the page and adapts to different screen sizes.
-// The component uses Clerk for user authentication and provides a dropdown menu for growth tools.  
+// The component uses Clerk for user authentication and provides a dropdown menu for growth tools.
 // The header also includes a logo and is styled with Tailwind CSS for responsiveness and aesthetics.
 
 
