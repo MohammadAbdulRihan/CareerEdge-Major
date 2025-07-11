@@ -1,12 +1,11 @@
 import React from 'react'
-import ResumeUploadDialog from './_components/ResumeUploadDialog';
-
+import Resume from './_components/Resume'
 const page = () => {
     return (
-        <div >
-            <h1 className="text-6xl font-bold gradient-title">Resume Analyser</h1>
-            <p className="text-2xl mt-4">Upload your resume and get insights</p>
-            <ResumeUploadDialog />
+        <div className='ml-4'>
+            <h1 className="md:text-6xl text-4xl font-bold gradient-title">Resume Analyser</h1>
+            <p className="md:text-2xl text-lg mt-4">Upload your resume and get insights</p>
+            <Resume />
         </div>
 
     )
