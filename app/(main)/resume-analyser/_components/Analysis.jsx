@@ -44,7 +44,7 @@ const Analysis = ({ data }) => {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="bg-white rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
+                    <div className="bg-background rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-user-circle text-gray-500 mr-2"></i> Contact Info
                         </h4>
@@ -53,7 +53,7 @@ const Analysis = ({ data }) => {
                         <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.contact_info?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
+                    <div className="bg-background rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-briefcase text-gray-500 mr-2"></i> Experience
                         </h4>
@@ -62,7 +62,7 @@ const Analysis = ({ data }) => {
                         <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.experience?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-md p-5 border border-yellow-200 relative overflow-hidden group">
+                    <div className="bg-background rounded-lg shadow-md p-5 border border-yellow-200 relative overflow-hidden group">
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-graduation-cap text-gray-500 mr-2"></i> Education
                         </h4>
@@ -71,7 +71,7 @@ const Analysis = ({ data }) => {
                         <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.education?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-md p-5 border border-red-200 relative overflow-hidden group">
+                    <div className="bg-background rounded-lg shadow-md p-5 border border-red-200 relative overflow-hidden group">
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-lightbulb text-gray-500 mr-2"></i> Skills
                         </h4>
