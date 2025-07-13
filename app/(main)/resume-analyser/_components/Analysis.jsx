@@ -3,15 +3,20 @@ const Analysis = ({ data }) => {
 
     const getTextCol = (score) => {
         score = parseInt(score, 10);
-        if (isNaN(score)) return "text-gray-500";
         if (score >= 80) return "text-green-500";
         else if (score >= 61) return "text-yellow-500";
         else return "text-red-500";
     }
 
+    const borderCol = (score) => {
+        score = parseInt(score, 10);
+        if (score >= 80) return "border-green-200";
+        else if (score >= 61) return "border-yellow-200";
+        else return "border-red-200";
+    }
+
     const bgCol = (score) => {
         score = parseInt(score, 10);
-        if (isNaN(score)) return "bg-gray-200";
         if (score >= 80) return "bg-green-500";
         else if (score >= 61) return "bg-yellow-500";
         else return "bg-red-500";
@@ -37,47 +42,44 @@ const Analysis = ({ data }) => {
                         </div>
                     </div>
 
-                    <div className="w-full bg-background rounded-full h-2.5 mb-4">
-                        <div className="bg-blue-600 h-2.5 rounded-full"></div>
-                    </div>
                     <span className="text-gray-200 text-sm">{data.summary_comment}</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                    <div className="bg-background rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
+                    <div className={`bg-background rounded-lg shadow-md p-5 border ${borderCol(data.sections.contact_info.score)} relative overflow-hidden group`}>
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-user-circle text-gray-500 mr-2"></i> Contact Info
                         </h4>
-                        <span className="text-4xl font-bold highlight-text">{data.contact_info?.score ?? 'N/A'}</span>
-                        <span className="text-sm text-gray-600 mt-2 block">{data.contact_info?.comment ?? ''}</span>
-                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.contact_info?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                        <span className="text-4xl font-bold highlight-text">{data.sections.contact_info.score}</span>
+                        <span className="text-sm text-gray-600 mt-2 block">{data.sections.contact_info.comment}</span>
+                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.sections.contact_info.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-background rounded-lg shadow-md p-5 border border-green-200 relative overflow-hidden group">
+                    <div className={`bg-background rounded-lg shadow-md p-5 border ${borderCol(data.sections.experience.score)} relative overflow-hidden group`}>
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-briefcase text-gray-500 mr-2"></i> Experience
                         </h4>
-                        <span className="text-4xl font-bold highlight-text">{data.experience?.score ?? 'N/A'}</span>
-                        <span className="text-sm text-gray-600 mt-2 block">{data.experience?.comment ?? ''}</span>
-                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.experience?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                        <span className="text-4xl font-bold highlight-text">{data.sections.experience.score}</span>
+                        <span className="text-sm text-gray-600 mt-2 block">{data.sections.experience.comment}</span>
+                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.sections.experience.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-background rounded-lg shadow-md p-5 border border-yellow-200 relative overflow-hidden group">
+                    <div className={`bg-background rounded-lg shadow-md p-5 border ${borderCol(data.sections.education.score)} relative overflow-hidden group`}>
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-graduation-cap text-gray-500 mr-2"></i> Education
                         </h4>
-                        <span className="text-4xl font-bold warning-text">{data.education?.score ?? 'N/A'}</span>
-                        <span className="text-sm text-gray-600 mt-2 block">{data.education?.comment ?? ''}</span>
-                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.education?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                        <span className="text-4xl font-bold warning-text">{data.sections.education.score}</span>
+                        <span className="text-sm text-gray-600 mt-2 block">{data.sections.education.comment}</span>
+                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.sections.education.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
 
-                    <div className="bg-background rounded-lg shadow-md p-5 border border-red-200 relative overflow-hidden group">
+                    <div className={`bg-background rounded-lg shadow-md p-5 border ${borderCol(data.sections.skills.score)} relative overflow-hidden group`}>
                         <h4 className="text-lg font-semibold text-gray-700 mb-3">
                             <i className="fas fa-lightbulb text-gray-500 mr-2"></i> Skills
                         </h4>
-                        <span className="text-4xl font-bold danger-text">{data.skills?.score ?? 'N/A'}</span>
-                        <span className="text-sm text-gray-600 mt-2 block">{data.skills?.comment ?? ''}</span>
-                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.skills?.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                        <span className="text-4xl font-bold danger-text">{data.sections.skills.score}</span>
+                        <span className="text-sm text-gray-600 mt-2 block">{data.sections.skills.comment}</span>
+                        <div className={`absolute inset-x-0 bottom-0 h-1 ${bgCol(data.sections.skills.score)} opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
                     </div>
                 </div>
 
