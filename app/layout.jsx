@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
     >
       <html lang="en" suppressHydrationWarning>
         <head>
-          <link rel="icon" href="/Logo.jpg" sizes="any" />
+          <link rel="icon" href="/Logo1.jpg" sizes="any" />
         </head>
         <body className={`${inter.className}`}>
           <ThemeProvider
@@ -32,7 +32,7 @@ export default function RootLayout({ children }) {
             disableTransitionOnChange
           >
             <Header />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-screen px-3">{children}</main>
             <Toaster richColors />
           </ThemeProvider>
         </body>

@@ -206,7 +206,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\pavan\\OneDrive - CVR College of Engineering\\Desktop\\my-Projects\\CareerEdge-Major\\prisma\\app\\generated\\prisma\\client",
+      "value": "E:\\B\\Clg_Projects\\Major\\CareerEdge - Major\\prisma\\app\\generated\\prisma\\client",
       "fromEnvVar": null
     },
     "config": {
@@ -220,7 +220,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\pavan\\OneDrive - CVR College of Engineering\\Desktop\\my-Projects\\CareerEdge-Major\\prisma\\schema.prisma",
+    "sourceFilePath": "E:\\B\\Clg_Projects\\Major\\CareerEdge - Major\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

@@ -6,8 +6,8 @@ import { FileText, Plus } from 'lucide-react';
 import Roadmap from './Roadmap';
 
 export default function RoadmapListPage({ initialRoadmaps }) {
-  const [roadmaps, setRoadmaps] = useState(initialRoadmaps); // ✅ load from props
-  const [create, setCreate] = useState(false);                // ✅ modal toggle
+  const [roadmaps, setRoadmaps] = useState(initialRoadmaps);
+  const [create, setCreate] = useState(false);
 
   return (
     <div className="max-w-2xl mx-auto p-6 space-y-6">

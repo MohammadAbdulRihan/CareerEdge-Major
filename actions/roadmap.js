@@ -7,45 +7,8 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import slugify from 'slugify';
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
 
-export async function saveRoadmap({ slug, title, content }) {
-  const { userId } = await auth();
-  if (!userId) throw new Error('Unauthorized');
-
-  const user = await db.user.findUnique({
-    where: { clerkUserId: userId },
-  });
-
-  if (!user) throw new Error('User not found');
-
-  try {
-    const roadmap = await db.roadmap.upsert({
-      where: {
-        slug_userId: {
-          slug,
-          userId: user.id,
-        },
-      },
-      update: {
-        title,
-        content,
-      },
-      create: {
-        slug,
-        title,
-        content,
-        userId: user.id,
-      },
-    });
-
-    revalidatePath('/roadmaps');
-    return roadmap;
-  } catch (error) {
-    console.error('Error saving roadmap:', error);
-    throw new Error('Failed to save roadmap');
-  }
-}
 
 export async function getUserRoadmaps() {
   const { userId } = await auth();
@@ -118,61 +81,64 @@ Respond only in valid JSON format:
   "initialNodes": [...],
   "initialEdges": [...]
 }
+
+Give significant gap between nodes to display them clearly.
+Also give in a straight line , from top to bottom, with no horizontal branches.
 `;
-//   console.log(skillTitle);
-  
+  //   console.log(skillTitle);
+
   try {
-   const result  = await model.generateContent([prompt]);
-const rawText = result.response.text().trim();
+    const result = await model.generateContent([prompt]);
+    const rawText = result.response.text().trim();
 
-// ── clean the output ─────────────────────────────────────────
-const cleaned = rawText
-  .replace(/^```json/i, '')   // remove opening ```json
-  .replace(/^```/, '')        // remove opening ``` (fallback)
-  .replace(/```$/, '')        // remove closing ```
-  .replace(/^[^\{]*/, '')     // cut anything before first “{”
-  .trim();
+    // ── clean the output ─────────────────────────────────────────
+    const cleaned = rawText
+      .replace(/^```json/i, '')   // remove opening ```json
+      .replace(/^```/, '')        // remove opening ``` (fallback)
+      .replace(/```$/, '')        // remove closing ```
+      .replace(/^[^\{]*/, '')     // cut anything before first “{”
+      .trim();
 
-// keep only the JSON block
+    // keep only the JSON block
 
-const slug = slugify(skillTitle.toLowerCase(), { lower: true });
-const open  = cleaned.indexOf('{');
-const close = cleaned.lastIndexOf('}');
-const json  = JSON.parse(cleaned.slice(open, close + 1));
-console.log(slug);
+    const slug = slugify(skillTitle.toLowerCase(), { lower: true });
+    const open = cleaned.indexOf('{');
+    const close = cleaned.lastIndexOf('}');
+    const json = JSON.parse(cleaned.slice(open, close + 1));
+    console.log(slug);
 
     const roadmap = await db.roadmap.upsert({
-  where: {
-    slug_userId: {
-      slug,
-      userId: user.id,
-    },
-  },
-  update: {
-    title: json.roadmapTitle || `${skillTitle} Roadmap`,
-    content: json,
-  },
-  create: {
-    title: json.roadmapTitle || `${skillTitle} Roadmap`,
-    slug,
-    content: json,
-    userId: user.id,
-  },
-});
+      where: {
+        slug_userId: {
+          slug,
+          userId: user.id,
+        },
+      },
+      update: {
+        title: json.roadmapTitle || `${skillTitle} Roadmap`,
+        content: json,
+      },
+      create: {
+        title: json.roadmapTitle || `${skillTitle} Roadmap`,
+        slug,
+        content: json,
+        userId: user.id,
+      },
+    });
 
 
     revalidatePath("/roadmap");
     return {
-  success: true,
-  message: "Roadmap saved successfully",
-  data: {
-    slug: roadmap.slug,
-    title: roadmap.title,
-  },
-};
+      success: true,
+      message: "Roadmap saved successfully",
+      data: {
+        slug: roadmap.slug,
+        title: roadmap.title,
+      },
+    };
   } catch (err) {
-    return {success:false,message:err.message}
     console.error("AI generation/parsing failed =>", err);
+    return { success: false, message: err.message }
     // throw new Error("Failed to generate AI roadmap");
   }
 }

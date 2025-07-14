@@ -11,7 +11,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog"
 import useFetch from "@/hooks/use-fetch"
-import { File, FileSearch2Icon, Sparkles } from "lucide-react"
+import { File, Sparkles, Upload } from "lucide-react"
 import { useState } from "react"
 import Analysis from "./Analysis"
 const Resume = () => {
@@ -50,8 +50,8 @@ const Resume = () => {
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogTrigger asChild>
                     <span className="flex items-center gap-2 text-xl mt-8 cursor-pointer" >
-                        <FileSearch2Icon className="h-5 w-5" />
-                        <span>Resume Analyser</span>
+                        <Upload className="h-5 w-5" />
+                        <span>Upload Resumer</span>
                     </span>
                 </DialogTrigger>
                 <DialogContent>
@@ -78,7 +78,7 @@ const Resume = () => {
                         </Button>
                         <Button disabled={loading || !file} onClick={() => onFileUpload()}>
                             {
-                                loading ? "Uploading..." : <><Sparkles /> Upload and Analyse</>
+                                loading ? "Analyzing..." : <><Sparkles /> Upload and Analyse</>
                             }
                         </Button>
                     </DialogFooter>

@@ -12,37 +12,36 @@ import {
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { SparkleIcon } from 'lucide-react'
-// import { createRoadmap } from '@/actions/roadmap' // ✅ Adjust the import as needed
 import { generateAIRoadmap } from '@/actions/roadmap'
-const Roadmap = ({ create, setCreate ,setRoadmaps}) => {
+const Roadmap = ({ create, setCreate, setRoadmaps }) => {
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
 
   const handleGenerate = async () => {
-  if (!input.trim()) return;
-  setLoading(true);
+    if (!input.trim()) return;
+    setLoading(true);
 
-  try {
-  const res = await generateAIRoadmap({ userInput: input });
+    try {
+      const res = await generateAIRoadmap({ userInput: input });
 
- if (res.success) {
-  setRoadmaps((prev) => [
-    ...prev,
-    {
-      id: res.data.slug,
-      name: res.data.title,
-    },
-  ]);
-    setCreate(false);
-    setInput('');
-  }
-} catch (err) {
-  console.error('Failed to generate roadmap:', err);
-} finally {
-  setLoading(false); // ✅ guaranteed to stop loading
-}
+      if (res.success) {
+        setRoadmaps((prev) => [
+          ...prev,
+          {
+            id: res.data.slug,
+            name: res.data.title,
+          },
+        ]);
+        setCreate(false);
+        setInput('');
+      }
+    } catch (err) {
+      console.error('Failed to generate roadmap:', err);
+    } finally {
+      setLoading(false);
+    }
 
-};
+  };
 
 
   return (

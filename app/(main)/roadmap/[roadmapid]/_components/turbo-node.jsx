@@ -5,11 +5,11 @@ import React from 'react';
 
 const TurboNode = ({ data }) => {
   return (
-    <div className="rounded-lg border border-gray-300 bg-yellow-100 shadow-md w-64 p-4">
+    <div className="rounded-lg border border-gray-300 bg-yellow-100 shadow-md w-full p-4">
       <div className="font-bold text-lg text-gray-800 mb-1">
         {data.title}
       </div>
-      
+
       <p className="text-sm text-gray-700 line-clamp-2">{data.description}</p>
 
       {data?.link && (

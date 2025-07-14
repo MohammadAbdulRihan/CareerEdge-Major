@@ -8,6 +8,7 @@ import {
   StarsIcon,
   GraduationCap,
   FileSearch2Icon,
+  Route,
 } from "lucide-react";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
@@ -17,13 +18,21 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from "next/image";
 
 
 export default async function Header() {
   return (
     <header className="fixed top-0 w-full border-b bg-background/80 backdrop-blur-md z-50 supports-[backdrop-filter]:bg-background/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center space-x-2">
+        <Link href="/" className="flex items-center space-x-2 cursor-pointer">
+          <Image
+            src="/Logo1.jpg"
+            alt="CareerEdge Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           CareerEdge
         </Link>
 
@@ -39,22 +48,26 @@ export default async function Header() {
                 <LayoutDashboard className="h-4 w-4" />
                 Industry Insights
               </Button>
-              <Button variant="ghost" className="md:hidden w-10 h-10 p-0">
-                <LayoutDashboard className="h-4 w-4" />
-              </Button>
             </Link>
 
             {/* Growth Tools Dropdown */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button className="flex items-center gap-2">
+                <Button className="flex items-center gap-2 md:w-56 w-full">
                   <StarsIcon className="h-4 w-4" />
                   <span className="hidden md:block">Growth Tools</span>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end" className="w-48">
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuItem asChild>
+                  <Link href="/roadmap" className="flex items-center gap-2">
+                    <Route className="h-4 w-4" />
+                    Roadmap Generator
+                  </Link>
+                </DropdownMenuItem>
+
                 <DropdownMenuItem asChild>
                   <Link href="/resume" className="flex items-center gap-2">
                     <FileText className="h-4 w-4" />
@@ -76,12 +89,6 @@ export default async function Header() {
                   >
                     <PenBox className="h-4 w-4" />
                     Cover Letter
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/roadmap" className="flex items-center gap-2">
-                    <FileText className="h-4 w-4" />
-                    Roadmap Generator
                   </Link>
                 </DropdownMenuItem>
 
@@ -111,7 +118,6 @@ export default async function Header() {
                   userPreviewMainIdentifier: "font-semibold",
                 },
               }}
-              afterSignOutUrl="/"
             />
           </SignedIn>
           {/* <ModeToggle /> */}
