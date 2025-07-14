@@ -1,9 +1,12 @@
 import { serve } from "inngest/next";
 
 import { inngest } from "@/inngest/client";
-import { generateIndustryInsights } from "@/inngest/function";
+import { AIRoadmapAgent, generateIndustryInsights } from "@/inngest/function";
 
 export const { GET, POST, PUT } = serve({
   client: inngest,
-  functions: [generateIndustryInsights],
+  functions: [generateIndustryInsights,
+    AIRoadmapAgent
+
+  ],
 });

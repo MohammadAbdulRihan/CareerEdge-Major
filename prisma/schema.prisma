@@ -28,6 +28,18 @@ model User {
   assessments Assessment[]
   resume      Resume?
   coverLetter CoverLetter[]
+  roadmaps    Roadmap[]
+}
+
+model Roadmap {
+  id      String @id @default(uuid())
+  slug    String
+  title   String
+  content Json
+  userId  String
+  user    User   @relation(fields: [userId], references: [id])
+
+   @@unique([slug, userId], name: "slug_userId") 
 }
 
 model Assessment {
