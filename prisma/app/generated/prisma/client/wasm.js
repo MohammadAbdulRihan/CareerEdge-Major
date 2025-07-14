@@ -134,6 +134,14 @@ exports.Prisma.UserScalarFieldEnum = {
   skills: 'skills'
 };
 
+exports.Prisma.RoadmapScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  title: 'title',
+  content: 'content',
+  userId: 'userId'
+};
+
 exports.Prisma.AssessmentScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -186,6 +194,10 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.JsonNullValueInput = {
+  JsonNull: Prisma.JsonNull
+};
+
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
@@ -196,9 +208,16 @@ exports.Prisma.NullsOrder = {
   last: 'last'
 };
 
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
+  Roadmap: 'Roadmap',
   Assessment: 'Assessment',
   Resume: 'Resume',
   CoverLetter: 'CoverLetter',
