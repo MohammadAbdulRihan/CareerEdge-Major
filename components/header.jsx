@@ -78,6 +78,12 @@ export default async function Header() {
                     Cover Letter
                   </Link>
                 </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="/roadmap" className="flex items-center gap-2">
+                    <FileText className="h-4 w-4" />
+                    Roadmap Generator
+                  </Link>
+                </DropdownMenuItem>
 
                 <DropdownMenuItem asChild>
                   <Link href="/interview" className="flex items-center gap-2">
