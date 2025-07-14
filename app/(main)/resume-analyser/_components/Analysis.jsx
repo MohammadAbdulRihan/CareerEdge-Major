@@ -25,7 +25,7 @@ const Analysis = ({ data }) => {
     return (
         <div>
             <h1 className='gradient-title text-3xl md:text-5xl text-center mt-8'>Report</h1>
-            <div className="no-scrollbar flex-shrink-0 border-r border-gray-200 overflow-y-auto pt-6 px-6 bg-background">
+            <div className="no-scrollbar flex-shrink-0  overflow-y-auto pt-6 px-6 bg-background">
                 <div className="bg-background rounded-lg shadow-md p-6 mb-6 border border-blue-200 transform hover:scale-[1.01] transition-transform duration-300 ease-in-out">
                     <h3 className="text-xl font-bold text-gray-200 mb-4 flex items-center">
                         <i className="fas fa-star text-yellow-500 mr-2"></i> Overall Score
@@ -104,7 +104,7 @@ const Analysis = ({ data }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                     <div className="bg-background rounded-lg shadow-md p-5 border border-green-200">
                         <h3 className="text-lg font-bold text-gray-200 mb-3 flex items-center">
-                            <i className="fas fa-hand-thumbs-up text-green-500 mr-2"></i> What's Good
+                            <i className="fas fa-hand-thumbs-up text-green-500 mr-2"></i> What&apos;s Good
                         </h3>
                         <ul className="list-disc list-inside text-gray-200 text-sm space-y-2">
                             {data.whats_good.map((point, index) => (

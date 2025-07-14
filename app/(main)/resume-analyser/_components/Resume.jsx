@@ -40,6 +40,7 @@ const Resume = () => {
             setFile(null);
         } catch (e) {
             console.error("Error uploading file:", error);
+            console.error(e);
             setOpen(false);
             return;
         }
@@ -51,7 +52,7 @@ const Resume = () => {
                 <DialogTrigger asChild>
                     <span className="flex items-center gap-2 text-xl mt-8 cursor-pointer" >
                         <Upload className="h-5 w-5" />
-                        <span>Upload Resumer</span>
+                        <span>Upload Resume</span>
                     </span>
                 </DialogTrigger>
                 <DialogContent>

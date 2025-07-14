@@ -18,7 +18,6 @@ import {
 } from "@/components/ui/card";
 import { useEffect, useState } from "react";
 import { format } from "date-fns";
-import { CardTitle as GradientCardTitle } from "@/components/ui/card";
 
 export default function PerformanceChart({ assessments }) {
   const [chartData, setChartData] = useState([]);
